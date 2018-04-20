@@ -6,7 +6,10 @@ from keras.layers import Dense
 
 np.random.seed(7)
 
+# dataset:
+# https://github.com/ga-students/sf-dat-21/blob/master/unit-projects/dataset/admissions.csv
 data = pd.read_csv("admissions.csv")
+
 y_train = data['admit']
 x_train = data.drop('admit', axis=1)
 
