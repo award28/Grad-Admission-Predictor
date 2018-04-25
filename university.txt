@@ -1,0 +1,91 @@
+Stanford University
+Columbia University
+University Of Michigan, Ann Arbor (UMich)
+University Of Washington, Seattle (UW)
+University Of California, Berkeley (UCB)
+Cornell University
+University Of California, Los Angeles (UCLA)
+University Of Illinois, Urbana-Champaign (UIUC)
+Carnegie Mellon University (CMU)
+University Of Wisconsin, Madison
+University Of Chicago (UChicago)
+University Of California, San Diego (UCSD)
+Harvard University
+University Of Pennsylvania (UPenn)
+University Of Texas, Austin (UT Austin)
+Boston University (BU)
+Northwestern University
+Massachusetts Institute Of Technology (MIT)
+New York University (NYU)
+Princeton University
+University Of Maryland, College Park (UMD)
+University Of Minnesota, Twin Cities (UMN)
+University Of Southern California (USC)
+University Of North Carolina, Chapel Hill (UNC)
+Georgia Institute Of Technology (GTech)
+Yale University
+Duke University
+Purdue University
+University Of Colorado, Boulder
+University Of California, Santa Barbara (UCSB)
+University Of California, Irvine (UCI)
+Ohio State University (OSU)
+North Caroline State University (NCSU)
+University Of Pittsburgh
+University Of Virginia (UVA)
+Johns Hopkins University (JHU)
+Brown University
+Arizona State University (ASU)
+Indiana University, Bloomington
+George Washington University (GWU)
+California Institute Of Technology (Caltech)
+University Of Florida, Gainesville (UFL)
+Vanderbilt University
+University Of Massachusetts, Amherst (UMass)
+Washington University, St. Louis (WUSTL)
+Pennsylvania State University (PennState)
+SUNY Buffalo
+SUNY Stony Brook
+Northeastern University
+Pennsylvania State University (Penn State)
+Rutgers University
+Georgetown University
+University Of Oregon
+University Of Arizona
+University Of California, Davis (UCD)
+Emory University
+University Of Notre Dame
+Rice University
+University Of Utah (UoU)
+University Of California, Santa Cruz (UCSC)
+Syracuse University
+Texas A&M University, College Station (TAMU)
+University Of Illinois, Chicago (UIC)
+University Of Connecticut
+Michigan State University (MSU)
+Tufts University
+University Of Central Florida (UCF)
+American University
+University of Texas, Austin (UT Austin)
+University Of Delaware
+University Of Rochester
+Virginia Tech
+University Of British Columbia (UBC)
+University Of California, Riverside (UCR)
+Florida State University (FSU)
+University Of Toronto (UofT)
+Rensselaer Polytechnic Institute (RPI)
+CUNY
+Temple University
+George Mason University (GMU)
+Iowa State University (ISU)
+University Of Houston
+Clemson University
+University Of Iowa
+University Of South Carolina
+Oregon State University
+University Of Georgia
+Texas A&M University (TAMU)
+University Of Kentucky
+University Of Texas, Dallas (UT Dallas)
+University Of Kansas
