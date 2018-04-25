@@ -1,39 +1,46 @@
+import pickle
 import numpy as np
+import pandas as pd
 from keras.models import Sequential
 from keras.layers import Dense
 
 np.random.seed(7)
 
-# dataset:
-# https://github.com/ga-students/sf-dat-21/blob/master/unit-projects/dataset/admissions.csv
+try:
+    model = pickle.load(open('model.pickle', 'rb'))
+except:
+    # df = pd.read_pickle("data.pickle")
+    data = pd.read_pickle("data_minusUniv.pickle")
+    
+    print(data.head())
+    mid = len(data)//2
+    train = data[:mid]
+    test = data[mid:]
+    
+    train_y = train['decision']
+    train_x = train.drop('decision', 1)
+    
+    test_y = test['decision']
+    test_x = test.drop('decision', 1)
+    
+    # Create the model
+    model = Sequential()
+    model.add(Dense(10, input_dim=len(train_x.columns), activation='relu'))
+    model.add(Dense(10, activation='relu'))
+    model.add(Dense(1, activation='sigmoid'))
+    
+    # Compile model
+    model.compile(
+            loss='binary_crossentropy', 
+            optimizer='adam', 
+            metrics=['accuracy']
+            )
+    
+    # Fit the model
+    model.fit(train_x, train_y, epochs=25, batch_size=100)
 
-dataset = np.loadtxt("admissions.csv", delimiter=",")
-# split into input (X) and output (Y) variables
-X = dataset[:,1:4]
-Y = dataset[:,0]
+    with open('model.pickle', 'wb') as p:
+        pickle.dump(model, p)
 
-
-model = Sequential()
-model.add(Dense(10, input_dim=3, activation='relu'))
-model.add(Dense(12, activation='relu'))
-model.add(Dense(1, activation='sigmoid'))
-
-# Compile model
-model.compile(
-        loss='binary_crossentropy', 
-        optimizer='adam', 
-        metrics=['accuracy'])
-
-# Fit the model
-model.fit(X, Y, epochs=30, batch_size=10)
-
-print("Prediction: " + str(model.predict(X)))
-
-''' NOT WORKING
-gre = int(input("gre: "))
-gpa = float(input("gpa: "))
-prestige = int(input("prestige: "))
-
-p = np.array([gre, gpa, prestige])
-print("Prediction: " + str(model.predict(p)))
-'''
+# Test the model
+print("Prediction: " + str(model.evaluate(test_x, test_y)))
