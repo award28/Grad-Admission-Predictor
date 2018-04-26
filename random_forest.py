@@ -1,26 +1,17 @@
 import pandas
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
-from sklearn import preprocessing
 
-features = ["uni_name","ugrad_gpa", "gre_verbal", "gre_quant"]
 target = "decision"
-data = pandas.read_csv("school_filter_new_gre.csv")
-
-le = preprocessing.LabelEncoder()
-column_name = "uni_name"
-for column_name in data.columns:
-    if data[column_name].dtype == object:
-        data[column_name] = le.fit_transform(data[column_name])
-    else:
-        pass
-print(data)
+data = pandas.read_csv("all_filter.csv")
+column_name = list(data)
+features = column_name[1:-1]
+target = column_name[0]
 
 train_features, test_features, train_target, test_target = train_test_split(data[features], data[target])
 
 clf = RandomForestClassifier()
 clf.fit(train_features, train_target)
-print(clf)
 
 predictions = clf.predict(test_features)
 actual = list(test_target)
