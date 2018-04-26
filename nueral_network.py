@@ -1,33 +1,44 @@
-import pickle
 import numpy as np
 import pandas as pd
-from keras.models import Sequential
+import keras.models
 from keras.layers import Dense
+from sklearn.model_selection import train_test_split
 
 np.random.seed(7)
+
+data = pd.read_csv("all_one_hot.csv")
+train, test = train_test_split(data, test_size=0.2)
+
+
+column_name = list(data)
+features = column_name[1:-1]
+target = column_name[0]
+
+train_features = train[features]
+train_target = train[target]
+
+test_features = test[features]
+test_target = test[target]
+
+# train = pd.read_csv("train_one_hot.csv")
+# test = pd.read_csv("test_one_hot.csv")
+#
+# column_name = list(train)
+# features = column_name[1:-1]
+# target = column_name[0]
+#
+# train_features = train[features]
+# train_target = train[target]
+#
+# test_features = test[features]
+# test_target = test[target]
 
 try:
     model = keras.models.load_model("nn.h5")
 except:
-    # df = pd.read_pickle("data.pickle")
-    data = pd.read_pickle("data_minusUniv.pickle")
-    print(data.head())
-    
-    q = len(data)//4
-    train = data[:len(data) - q]
-    test = data[len(data) - q:]
-    
-    train_y = train['decision']
-    train_x = train.drop('decision', 1)
-    
-    test_y = test['decision']
-    test_x = test.drop('decision', 1)
-
-    print(data.head())
-    
     # Create the model
-    model = Sequential()
-    model.add(Dense(20, input_dim=len(train_x.columns), activation='relu'))
+    model = keras.models.Sequential()
+    model.add(Dense(20, input_dim=len(train_features.columns), activation='relu'))
     model.add(Dense(15, activation='relu'))
     model.add(Dense(10, activation='relu'))
     model.add(Dense(1, activation='sigmoid'))
@@ -40,9 +51,9 @@ except:
             )
     
     # Fit the model
-    model.fit(train_x, train_y, epochs=150, batch_size=30)
+    model.fit(train_features, train_target, epochs=150, batch_size=30)
 
     model.save("nn.h5")
 
 # Test the model
-print("Prediction: " + str(model.evaluate(test_x, test_y)))
+print("Prediction: " + str(model.evaluate(test_features, test_target)))
