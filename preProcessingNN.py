@@ -30,11 +30,12 @@ columns = {'status':[], 'decision_method':[], 'degree':[]}
 for idx, row in data.iterrows():
     for c in columns:
         val = data.loc[idx, c]
-        if val not in columns[c]:
+        if val != 0 and val not in columns[c]:
             columns[c].append(val)
 
 for key, l in columns.items():
     for i, word in enumerate(l, start=1):
         data = data.replace(word, i)
 
+print(data.head())
 data.to_pickle("data_minusUniv.pickle")

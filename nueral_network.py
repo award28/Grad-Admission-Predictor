@@ -7,25 +7,28 @@ from keras.layers import Dense
 np.random.seed(7)
 
 try:
-    model = pickle.load(open('model.pickle', 'rb'))
+    model = keras.models.load_model("nn.h5")
 except:
     # df = pd.read_pickle("data.pickle")
     data = pd.read_pickle("data_minusUniv.pickle")
-    
     print(data.head())
-    mid = len(data)//2
-    train = data[:mid]
-    test = data[mid:]
+    
+    q = len(data)//4
+    train = data[:len(data) - q]
+    test = data[len(data) - q:]
     
     train_y = train['decision']
     train_x = train.drop('decision', 1)
     
     test_y = test['decision']
     test_x = test.drop('decision', 1)
+
+    print(data.head())
     
     # Create the model
     model = Sequential()
-    model.add(Dense(10, input_dim=len(train_x.columns), activation='relu'))
+    model.add(Dense(20, input_dim=len(train_x.columns), activation='relu'))
+    model.add(Dense(15, activation='relu'))
     model.add(Dense(10, activation='relu'))
     model.add(Dense(1, activation='sigmoid'))
     
@@ -37,10 +40,9 @@ except:
             )
     
     # Fit the model
-    model.fit(train_x, train_y, epochs=25, batch_size=100)
+    model.fit(train_x, train_y, epochs=150, batch_size=30)
 
-    with open('model.pickle', 'wb') as p:
-        pickle.dump(model, p)
+    model.save("nn.h5")
 
 # Test the model
 print("Prediction: " + str(model.evaluate(test_x, test_y)))
