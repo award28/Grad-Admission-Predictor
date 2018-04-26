@@ -12,3 +12,5 @@ with open('all_filter_new_gre.csv') as f:
     cn.most_common()
     for t in cn.most_common():
         print("{} appears {} times".format(*t))
+
+
