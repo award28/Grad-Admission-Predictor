@@ -6,12 +6,14 @@ from sklearn.model_selection import train_test_split
 
 np.random.seed(7)
 
-data = pd.read_csv("all_one_hot.csv")
-train, test = train_test_split(data, test_size=0.2)
+# data = pd.read_csv("data/filter/grad_uni_one_hot.csv")
+# train, test = train_test_split(data, test_size=0.2)
 
+train = pd.read_csv("data/train/grad_uni_one_hot.csv")
+test = pd.read_csv("data/test/grad_uni_one_hot.csv")
 
-column_name = list(data)
-features = column_name[1:-1]
+column_name = list(train)
+features = column_name[1:]
 target = column_name[0]
 
 train_features = train[features]
@@ -19,19 +21,6 @@ train_target = train[target]
 
 test_features = test[features]
 test_target = test[target]
-
-# train = pd.read_csv("train_one_hot.csv")
-# test = pd.read_csv("test_one_hot.csv")
-#
-# column_name = list(train)
-# features = column_name[1:-1]
-# target = column_name[0]
-#
-# train_features = train[features]
-# train_target = train[target]
-#
-# test_features = test[features]
-# test_target = test[target]
 
 try:
     model = keras.models.load_model("nn.h5")

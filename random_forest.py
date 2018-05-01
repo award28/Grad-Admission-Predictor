@@ -2,20 +2,14 @@ import pandas
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 
+# data = pandas.read_csv("data/filter/grad_uni_one_hot.csv")
+# train, test = train_test_split(data, test_size=0.2)
 
-# data = pandas.read_csv("all_filter_col.csv")
-# column_name = list(data)
-# features = column_name[1:-1]
-# target = column_name[0]
-# train_features, test_features, train_target, test_target = train_test_split(data[features], data[target],
-#                                                                              test_size=0.2, random_state=42)
-
-dtype = {"decision": bool, "ugrad_gpa": float, "gre_verbal": int, "gre_quant": int, "gre_writing": float}
-train = pandas.read_csv("train_one_hot.csv", dtype=dtype)
-test = pandas.read_csv("test_one_hot.csv", dtype=dtype)
+train = pandas.read_csv("data/train/grad_uni_one_hot.csv")
+test = pandas.read_csv("data/test/grad_uni_one_hot.csv")
 
 column_name = list(train)
-features = column_name[1:-1]
+features = column_name[1:]
 target = column_name[0]
 
 train_features = train[features]
